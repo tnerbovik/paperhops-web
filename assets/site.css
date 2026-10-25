@@ -29,16 +29,18 @@ a:focus-visible, select:focus-visible, button:focus-visible { outline: 3px solid
 .primary-nav a:hover { color: var(--color-tint); }
 .nav-download { background: var(--color-primary); color: var(--color-on-primary) !important; border-radius: var(--radius-pill); padding: 0 20px; }
 .nav-download:hover, .nav-download:active { background: var(--color-primary-pressed); }
-/* Language suggestion banner (language.js), like apple.com's locale banner. */
-.lang-banner { background: var(--color-background-selected); border-bottom: 1px solid var(--color-border); font-size: 13px; }
-.lang-banner .wrap { display: flex; align-items: center; gap: 12px 20px; min-height: 60px; padding-block: 10px; }
-.lang-banner p { flex: 1; margin: 0; line-height: 1.45; }
-.lang-banner-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-.lang-banner select { min-height: 36px; min-width: 130px; padding: 0 10px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-background-element); color: var(--color-text); font: inherit; cursor: pointer; }
-.lang-banner-go { min-height: 36px; padding: 0 18px; border: 0; border-radius: var(--radius-pill); background: var(--color-text); color: var(--color-background); font: inherit; font-weight: 600; cursor: pointer; }
-.lang-banner-go:hover { opacity: .85; }
-.lang-banner-close { display: grid; place-items: center; width: 40px; height: 40px; margin-right: -10px; border: 0; border-radius: 50%; background: none; color: var(--color-text-secondary); font-size: 24px; line-height: 1; cursor: pointer; }
-.lang-banner-close:hover { background: var(--color-border); color: var(--color-text); }
+/* Language bar above the header on every page, like apple.com's (language.js). */
+.lang-bar { background: var(--color-background-selected); border-bottom: 1px solid var(--color-border); font-size: 13px; }
+.lang-bar .wrap { display: flex; align-items: center; gap: 10px 20px; min-height: 60px; padding-block: 10px; }
+.lang-bar p { flex: 1; margin: 0; line-height: 1.45; }
+.lang-bar-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.lang-bar-actions[hidden] { display: none; }
+.lang-bar select { min-height: 36px; min-width: 130px; padding: 0 10px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-background-element); color: var(--color-text); font: inherit; cursor: pointer; }
+.lang-bar-go { min-height: 36px; padding: 0 18px; border: 0; border-radius: var(--radius-pill); background: var(--color-text); color: var(--color-background); font: inherit; font-weight: 600; cursor: pointer; }
+.lang-bar-go:hover { opacity: .85; }
+.lang-bar-links { display: flex; align-items: center; gap: 10px; }
+.lang-bar-links a { display: inline-flex; align-items: center; min-height: 36px; color: var(--color-text); }
+.lang-bar-links a[aria-current] { font-weight: 600; text-decoration: none; }
 
 /* Hero */
 .hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; padding-block: 40px 72px; }
@@ -173,12 +175,8 @@ a:focus-visible, select:focus-visible, button:focus-visible { outline: 3px solid
 .site-footer nav a:hover { color: var(--color-tint); }
 .footer-bottom { display: flex; justify-content: space-between; gap: 12px 20px; flex-wrap: wrap; margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--color-border); }
 .footer-bottom a { text-underline-offset: 3px; }
-.footer-language { display: flex; align-items: center; gap: 10px; }
-.footer-language a { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-text); text-decoration: none; }
-.footer-language a:hover { text-decoration: underline; }
-.footer-language a[aria-current] { font-weight: 600; }
 
-.not-found { min-height: 100svh; display: grid; align-content: center; justify-items: center; text-align: center; padding-block: 60px; }
+.not-found { min-height: calc(100svh - 61px); display: grid; align-content: center; justify-items: center; text-align: center; padding-block: 60px; }
 .not-found .brand { margin-bottom: 40px; }
 .not-found h1 { font-size: clamp(40px, 6vw, 72px); }
 .not-found p:not(.eyebrow) { color: var(--color-text-secondary); }
@@ -221,10 +219,10 @@ a:focus-visible, select:focus-visible, button:focus-visible { outline: 3px solid
   .site-header { padding-block: 16px; }
   .brand { font-size: 24px; }
   .brand img { width: 34px; height: 34px; }
-  .lang-banner .wrap { flex-wrap: wrap; gap: 8px; padding-block: 10px 6px; }
-  .lang-banner p { flex-basis: 100%; }
-  .lang-banner-actions { flex: 1; }
-  .lang-banner select { flex: 1; min-width: 0; }
+  .lang-bar .wrap { flex-wrap: wrap; gap: 8px; }
+  .lang-bar p { flex-basis: 100%; }
+  .lang-bar-actions { flex: 1; }
+  .lang-bar select { flex: 1; min-width: 0; }
   .primary-nav { font-size: 14px; gap: 0 16px; }
   .primary-nav .nav-download { display: none; }
   .hero h1 { font-size: clamp(46px, 13vw, 60px); }

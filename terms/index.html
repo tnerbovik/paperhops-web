@@ -34,16 +34,16 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <aside class="lang-banner" lang="nb" aria-label="Språkvalg" data-language-banner hidden>
+  <div class="lang-bar" role="region" aria-label="Language" data-language-bar>
     <div class="wrap">
-      <p><strong>Se Paperhops på norsk.</strong><br>Velg språket du vil lese nettsiden på.</p>
-      <div class="lang-banner-actions">
-        <select aria-label="Språk"><option value="en" lang="en" data-label="English">English</option><option value="nb" lang="nb" data-label="Norsk" selected>Norsk</option></select>
-        <button type="button" class="lang-banner-go" data-language-continue>Fortsett</button>
-        <button type="button" class="lang-banner-close" data-language-close aria-label="Lukk"><span aria-hidden="true">×</span></button>
+      <p data-language-text data-suggest-title="Se Paperhops på norsk." data-suggest-line="Velg språket du vil lese nettsiden på." data-suggest-button="Fortsett"><strong>Choose your language.</strong><br><span>Paperhops is available in English and Norwegian.</span></p>
+      <div class="lang-bar-actions" data-language-controls hidden>
+        <select aria-label="Language"><option value="en" lang="en" data-label="English" selected>English</option><option value="nb" lang="nb" data-label="Norsk">Norsk</option></select>
+        <button type="button" class="lang-bar-go" data-language-continue>Continue</button>
       </div>
+      <noscript><nav class="lang-bar-links" aria-label="Language"><a href="/terms/" lang="en" hreflang="en" aria-current="true">English</a><span aria-hidden="true">|</span><a href="/no/terms/" lang="nb" hreflang="nb">Norsk</a></nav></noscript>
     </div>
-  </aside>
+  </div>
   <header class="site-header wrap">
     <a class="brand" href="/" aria-label="Paperhops home"><img src="/assets/icons/favicon.svg" width="40" height="40" alt=""><span class="wordmark">Paperhops<span>.</span></span></a>
     <nav class="primary-nav" aria-label="Main navigation">
@@ -87,7 +87,6 @@
       </div>
       <div class="footer-bottom">
         <span>© 2026 Paperhops (Torbjørn Nerbøvik)</span>
-        <nav class="footer-language" aria-label="Language"><a href="/terms/" lang="en" hreflang="en" data-language-link="en" aria-current="true">English</a><span aria-hidden="true">|</span><a href="/no/terms/" lang="nb" hreflang="nb" data-language-link="nb">Norsk</a></nav>
         <a href="mailto:hello@paperhops.app">hello@paperhops.app</a>
       </div>
     </div>
