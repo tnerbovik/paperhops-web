@@ -1,0 +1,22 @@
+{
+  "name": "Paperhops",
+  "short_name": "Paperhops",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#fbf6ec",
+  "theme_color": "#ee5a3c",
+  "icons": [
+    {
+      "src": "/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
