@@ -1,0 +1,92 @@
+/*
+ * Paperhops theme: the app's design tokens (src/constants/colors.ts and theme.ts in the app
+ * project), shared by every page on paperhops.app, including /free/. Link it before any page
+ * stylesheet:  <link rel="stylesheet" href="/assets/theme.css">
+ *
+ * --brand-* are the crayons, for illustrations, decorative marks and large shapes only.
+ * --color-* are the UI tokens; anything carrying text uses these (at least 4.5:1), which is why
+ * text is --color-tint or a --color-*-ink, never a raw crayon.
+ */
+@font-face { font-family: "Fredoka"; font-weight: 500; font-display: swap; src: url("/assets/fonts/fredoka-500.woff2") format("woff2"); }
+@font-face { font-family: "Fredoka"; font-weight: 600; font-display: swap; src: url("/assets/fonts/fredoka-600.woff2") format("woff2"); }
+
+:root {
+  color-scheme: light dark;
+
+  --brand-tomato: #EE5A3C;
+  --brand-sunflower: #F6B83C;
+  --brand-sky: #3E9BDB;
+  --brand-leaf: #46A86A;
+  --brand-plum: #8C6BC8;
+  --brand-paper: #FBF6EC;
+  --brand-ink: #2A2420;
+  --brand-night: #1C1815;
+
+  --color-text: #2A2420;
+  --color-background: #FBF6EC;
+  --color-background-elevated: #FFFDF8;
+  --color-background-element: #FFFDF8;
+  --color-background-selected: #F3EBDC;
+  --color-text-secondary: #6B5F55;
+  --color-text-tertiary: #A39789; /* placeholders and disabled only: below 4.5:1 by design */
+  --color-border: #E8DCC7;
+  --color-primary: #C2402A;
+  --color-primary-pressed: #A83521;
+  --color-on-primary: #FFFFFF;
+  --color-tint: #B83E27;
+  --color-primary-soft: #FCE6DF;
+  --color-tomato-soft: #FDE3DA;
+  --color-tomato-ink: #A5361F;
+  --color-sunflower-soft: #FDF0CF;
+  --color-sunflower-ink: #7F5300;
+  --color-sky-soft: #DCEEFA;
+  --color-sky-ink: #1D6496;
+  --color-leaf-soft: #DFF2E5;
+  --color-leaf-ink: #276C42;
+  --color-plum-soft: #ECE4F8;
+  --color-plum-ink: #5E3F9A;
+  --color-accent: #F6B83C;
+  --color-on-accent: #2A2420;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  --shadow-paper: 0 1px 0 rgba(42, 36, 32, 0.06), 0 6px 16px rgba(42, 36, 32, 0.06);
+  --shadow-raised: 0 4px 14px rgba(42, 36, 32, 0.14);
+
+  --font-display: "Fredoka", ui-rounded, -apple-system, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: #F7F0E4;
+    --color-background: #1C1815;
+    --color-background-elevated: #2C2622;
+    --color-background-element: #26211D;
+    --color-background-selected: #312A25;
+    --color-text-secondary: #BDB1A3;
+    --color-text-tertiary: #857A6E;
+    --color-border: #3A322C;
+    --color-primary: #C2402A;
+    --color-primary-pressed: #A83521;
+    --color-on-primary: #FFFFFF;
+    --color-tint: #FF8A6E;
+    --color-primary-soft: #3D2620;
+    --color-tomato-soft: #3B241D;
+    --color-tomato-ink: #FF9A80;
+    --color-sunflower-soft: #3A2F17;
+    --color-sunflower-ink: #F6C866;
+    --color-sky-soft: #1C2E3B;
+    --color-sky-ink: #8CC8F2;
+    --color-leaf-soft: #1F3125;
+    --color-leaf-ink: #8FD6A6;
+    --color-plum-soft: #2C2440;
+    --color-plum-ink: #C3AEF0;
+    --color-accent: #F6B83C;
+    --color-on-accent: #2A2420;
+  }
+}

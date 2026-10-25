@@ -2,7 +2,7 @@
 
 Static website for [paperhops.app](https://paperhops.app), hosted on GitHub Pages under the tnerbovik account. Paperhops is an iPhone and iPad app with printable colouring pages and dot-to-dots for kids aged 3 to 10.
 
-The site is plain HTML with one shared stylesheet (`assets/site.css`) and no build step. Navigation works without JavaScript; `assets/language.js` only handles the language choice.
+The site is plain HTML with two shared stylesheets (`assets/theme.css` for the design tokens, `assets/site.css` for the layout) and no build step. Navigation works without JavaScript; `assets/language.js` only handles the language choice.
 
 ## Pages
 
@@ -31,9 +31,11 @@ English lives at the root and Norwegian under `/no/`, with the same page paths. 
 
 Run the tests with `node --test tests/`.
 
-## Look
+## Message and look
 
-"Paper and crayon": cream paper `#FBF6EC` (dark mode `#1C1815`), tomato `#EE5A3C` (text uses `#B83E27`, or `#F47C62` in dark mode), sunflower `#F6B83C`, ink `#2A2420`. Headings use Fredoka 500/600, self-hosted from `assets/fonts/` (subset to Latin, SIL Open Font License in `assets/fonts/OFL.txt`) so the site makes no third-party requests. Drawings always sit on white sheets, in both light and dark mode.
+The site speaks to parents and grandparents who want a child off the tablet for a while: "Less screen. More life." The landing page has a "Why paper" section (calm focus, busy hands, their own ideas, time together; modest claims, no statistics) and a grandparents section. Titles and descriptions use phrases people search for: printable colouring pages, screen-free activities for kids, less screen time, skjermfri, fargeleggingsark.
+
+Colours, radii, shadows and fonts are the app's design tokens (`src/constants/colors.ts` and `theme.ts` in the app project), defined once in `assets/theme.css` with a `prefers-color-scheme: dark` variant. Every page, including `/free/`, links it before its own stylesheet. `--brand-*` crayons (tomato, sunflower, sky, leaf, plum) are only for drawings, decorative marks and large shapes; text uses `--color-tint` or a `--color-*-ink` on its `--color-*-soft` fill, which keeps contrast at 4.5:1 or more. The age levels use sky (3–5), leaf (6–8) and plum (9+), as in the app. Headings use Fredoka 500/600, self-hosted from `assets/fonts/` (subset to Latin, SIL Open Font License in `assets/fonts/OFL.txt`) so the site makes no third-party requests. Drawings always sit on white sheets, in both light and dark mode.
 
 ## Asset sources
 

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fbf6ec" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1c1815" media="(prefers-color-scheme: dark)">
-  <title>Paperhops — Colouring pages and dot-to-dots to print</title>
-  <meta name="description" content="Less screen. More life. 900 printable colouring pages and dot-to-dots for kids aged 3 to 10, at three levels. No ads, no account, no tracking.">
+  <title>Paperhops — Printable colouring pages for less screen time</title>
+  <meta name="description" content="Less screen. More life. Swap tablet time for paper: 900 printable colouring pages and dot-to-dots for kids aged 3 to 10, made for parents and grandparents. No ads, no account, no tracking.">
   <link rel="canonical" href="https://paperhops.app/">
   <link rel="alternate" hreflang="en" href="https://paperhops.app/">
   <link rel="alternate" hreflang="nb" href="https://paperhops.app/no/">
@@ -18,17 +18,18 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preload" href="/assets/fonts/fredoka-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/theme.css">
   <link rel="stylesheet" href="/assets/site.css">
   <script src="/assets/language.js" defer></script>
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Paperhops">
   <meta property="og:locale" content="en_GB">
-  <meta property="og:title" content="Paperhops — Colouring pages and dot-to-dots to print">
-  <meta property="og:description" content="Less screen. More life. 900 printable colouring pages and dot-to-dots for kids aged 3 to 10, at three levels. No ads, no account, no tracking.">
+  <meta property="og:title" content="Paperhops — Printable colouring pages for less screen time">
+  <meta property="og:description" content="Less screen. More life. Swap tablet time for paper: 900 printable colouring pages and dot-to-dots for kids aged 3 to 10, made for parents and grandparents. No ads, no account, no tracking.">
   <meta property="og:url" content="https://paperhops.app/">
   <meta property="og:image" content="https://paperhops.app/assets/social-preview.png">
   <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Paperhops. Less screen. More life. 900 colouring pages and dot-to-dots to print.">
+  <meta property="og:image:alt" content="Paperhops. Less screen. More life. Swap 20 minutes of screen for a page to colour.">
   <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
@@ -36,7 +37,7 @@
   <header class="site-header wrap">
     <a class="brand" href="/" aria-label="Paperhops home"><img src="/assets/icons/favicon.svg" width="40" height="40" alt=""><span class="wordmark">Paperhops<span>.</span></span></a>
     <nav class="primary-nav" aria-label="Main navigation">
-      <a href="/#levels">Levels</a>
+      <a href="/#why-paper">Why paper</a>
       <a href="/#pricing">Free &amp; Pro</a>
       <!-- FREE PAGES SLOT: the free colouring-page section lives under /free/ (built separately). -->
       <a href="/free/">Free colouring pages</a>
@@ -50,9 +51,9 @@
   <main id="main">
     <section class="hero wrap" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow">Colouring pages &amp; dot-to-dots to print</p>
+        <p class="eyebrow">Screen-free activities for kids</p>
         <h1 id="hero-title">Less screen.<br><span>More life.</span></h1>
-        <p class="hero-intro">Paperhops is a library of colouring pages for kids aged 3 to 10, right on your iPhone. Pick a page, print it, put the phone away.</p>
+        <p class="hero-intro">Swap 20 minutes of screen for a page to colour. Paperhops gives parents and grandparents 900 printable colouring pages and dot-to-dots for children aged 3 to 10. Real paper, real crayons, real time together.</p>
         <div class="hero-actions">
           <!-- TODO(launch): placeholder App Store link, the app is not published yet. --><a class="store-link" href="https://apps.apple.com/app/paperhops"><img src="/assets/app-store-badge.svg" width="180" height="60" alt="Download on the App Store"></a>
           <!-- FREE PAGES SLOT: links to the free colouring-page section under /free/ (built separately). -->
@@ -63,25 +64,35 @@
       </div>
       <div class="hero-visual">
         <figure class="sheet hero-back"><img src="/assets/drawings/ocean-whale-1.svg" width="200" height="200" fetchpriority="high" alt="Colouring page of a smiling whale"></figure>
-        <figure class="sheet hero-front"><svg class="scribble" viewBox="0 0 200 200" aria-hidden="true"><path d="M64 112 L150 104 L66 124 L152 116 L70 136 L150 128 L76 146" stroke="#f6b83c" stroke-width="9" opacity="0.8"/><path d="M96 36 L116 58 L100 62 L122 86 L108 90 L124 108 M160 108 L182 126 L164 134 L182 156 L168 164" stroke="#ee5a3c" stroke-width="7" opacity="0.65"/></svg><img src="/assets/drawings/fantasy-unicorn-1.svg" width="200" height="200" fetchpriority="high" alt="Unicorn colouring page, partly coloured in with crayons"></figure>
-        <div class="hero-crayons" aria-hidden="true"><i style="--c:#ee5a3c"></i><i style="--c:#f6b83c"></i><i style="--c:#4f9a6b"></i></div>
+        <figure class="sheet hero-front"><svg class="scribble" viewBox="0 0 200 200" aria-hidden="true"><path d="M64 112 L150 104 L66 124 L152 116 L70 136 L150 128 L76 146" style="stroke: var(--brand-sunflower)" stroke-width="9" opacity="0.8"/><path d="M96 36 L116 58 L100 62 L122 86 L108 90 L124 108 M160 108 L182 126 L164 134 L182 156 L168 164" style="stroke: var(--brand-tomato)" stroke-width="7" opacity="0.65"/></svg><img src="/assets/drawings/fantasy-unicorn-1.svg" width="200" height="200" fetchpriority="high" alt="Unicorn colouring page, partly coloured in with crayons"></figure>
+        <div class="hero-crayons" aria-hidden="true"><i style="--c: var(--brand-tomato)"></i><i style="--c: var(--brand-sunflower)"></i><i style="--c: var(--brand-sky)"></i><i style="--c: var(--brand-leaf)"></i><i style="--c: var(--brand-plum)"></i></div>
       </div>
     </section>
     <ul class="trust-strip wrap" aria-label="Privacy and pricing"><li>No ads</li><li>No account</li><li>No tracking</li><li>No subscription</li></ul>
 
+    <section id="why-paper" class="section wrap" aria-labelledby="why-title">
+      <div class="section-heading"><p class="eyebrow">Why paper</p><h2 id="why-title">Real paper, real crayons, real time together.</h2><p>Screens aren’t the enemy, but most families would like a little less of them. A page to colour is an easy swap: quick to start, nothing to charge, and right there on the kitchen table.</p></div>
+      <ul class="extras" role="list"><li><span class="extras-symbol crayon-sky" aria-hidden="true">◐</span><h3>Calm focus</h3><p>Colouring is slow on purpose. One page can hold a child’s attention, with no notifications and no next video starting by itself.</p></li><li><span class="extras-symbol crayon-leaf" aria-hidden="true">✎</span><h3>Busy hands</h3><p>Holding a crayon, staying near the lines and joining the dots are good practice for small hands.</p></li><li><span class="extras-symbol crayon-plum" aria-hidden="true">✦</span><h3>Their own ideas</h3><p>No right colours and no score. A purple lion is a perfectly good lion.</p></li><li><span class="extras-symbol crayon-tomato" aria-hidden="true">✿</span><h3>Time together</h3><p>Sit down beside them. Colouring works across generations, from three to ninety-three.</p></li></ul>
+    </section>
+
     <section id="levels" class="section wrap" aria-labelledby="levels-title">
-      <div class="section-heading"><p class="eyebrow">Three levels</p><h2 id="levels-title">One lion. Three ways to colour it.</h2><p>Each of the 300 subjects is drawn three times, from big friendly shapes to fine detail. Siblings can colour the same picture, each at their own level.</p></div>
-      <ul class="levels" role="list"><li><figure class="sheet"><img src="/assets/drawings/animals-lion-1.svg" width="200" height="200" loading="lazy" alt="Simple lion colouring page with big shapes and thick lines"></figure><span class="level-age">3–5</span><h3>Little artists</h3><p>Big shapes and thick lines for small hands and chunky crayons.</p></li><li><figure class="sheet"><img src="/assets/drawings/animals-lion-2.svg" width="200" height="200" loading="lazy" alt="Picture-book lion lying in the grass"></figure><span class="level-age">6–8</span><h3>Young explorers</h3><p>Picture-book drawings with more to discover and colour in.</p></li><li><figure class="sheet"><img src="/assets/drawings/animals-lion-3.svg" width="200" height="200" loading="lazy" alt="Detailed, realistic lion portrait with a flowing mane"></figure><span class="level-age">9+</span><h3>Creative masters</h3><p>Realistic, detailed pages for older kids, and for grown-ups who want a calm half hour.</p></li></ul>
+      <div class="section-heading"><p class="eyebrow">Three levels</p><h2 id="levels-title">One lion. Three ways to colour it.</h2><p>Each of the 300 subjects is drawn three times, from big friendly shapes to fine detail. Siblings, cousins and grandparents can colour the same picture, each at their own level.</p></div>
+      <ul class="levels" role="list"><li><figure class="sheet"><img src="/assets/drawings/animals-lion-1.svg" width="200" height="200" loading="lazy" alt="Simple lion colouring page with big shapes and thick lines"></figure><span class="level-age crayon-sky">3–5</span><h3>Little artists</h3><p>Big shapes and thick lines for small hands and chunky crayons.</p></li><li><figure class="sheet"><img src="/assets/drawings/animals-lion-2.svg" width="200" height="200" loading="lazy" alt="Picture-book lion lying in the grass"></figure><span class="level-age crayon-leaf">6–8</span><h3>Young explorers</h3><p>Picture-book drawings with more to discover and colour in.</p></li><li><figure class="sheet"><img src="/assets/drawings/animals-lion-3.svg" width="200" height="200" loading="lazy" alt="Detailed, realistic lion portrait with a flowing mane"></figure><span class="level-age crayon-plum">9+</span><h3>Creative masters</h3><p>Realistic, detailed pages for older kids, and relaxing adult colouring for parents and grandparents.</p></li></ul>
     </section>
 
     <section id="dot-to-dot" class="section wrap feature-row" aria-labelledby="dots-title">
       <div class="feature-copy"><p class="eyebrow">Dot-to-dot</p><h2 id="dots-title">Join the dots. Then colour it in.</h2><p>Every simple drawing also comes as a dot-to-dot. Counting from one dot to the next turns into a stegosaurus, a cat or a rocket, and then into a colouring page.</p><ul class="check-list"><li>A dot-to-dot for each of the 300 subjects</li><li>Counting practice that ends in a picture</li><li>Prints just like a colouring page</li></ul></div>
-      <div class="pair"><figure class="sheet"><img src="/assets/drawings/dinosaurs-stegosaurus-1-dots.svg" width="200" height="200" loading="lazy" alt="Dot-to-dot page of a stegosaurus with numbered dots"></figure><span class="pair-arrow"><span aria-hidden="true">→</span><span class="visually-hidden">becomes</span></span><figure class="sheet"><svg class="scribble" viewBox="0 0 200 200" aria-hidden="true"><path d="M58 110 L140 98 L60 122 L146 110 L66 134 L144 124" stroke="#f6b83c" stroke-width="9" opacity="0.8"/><path d="M60 82 L78 66 L92 56 L110 52 L128 56 L146 70" stroke="#ee5a3c" stroke-width="8" opacity="0.6"/></svg><img src="/assets/drawings/dinosaurs-stegosaurus-1.svg" width="200" height="200" loading="lazy" alt="The finished stegosaurus, partly coloured in"></figure></div>
+      <div class="pair"><figure class="sheet"><img src="/assets/drawings/dinosaurs-stegosaurus-1-dots.svg" width="200" height="200" loading="lazy" alt="Dot-to-dot page of a stegosaurus with numbered dots"></figure><span class="pair-arrow"><span aria-hidden="true">→</span><span class="visually-hidden">becomes</span></span><figure class="sheet"><svg class="scribble" viewBox="0 0 200 200" aria-hidden="true"><path d="M58 110 L140 98 L60 122 L146 110 L66 134 L144 124" style="stroke: var(--brand-leaf)" stroke-width="9" opacity="0.7"/><path d="M60 82 L78 66 L92 56 L110 52 L128 56 L146 70" style="stroke: var(--brand-tomato)" stroke-width="8" opacity="0.6"/></svg><img src="/assets/drawings/dinosaurs-stegosaurus-1.svg" width="200" height="200" loading="lazy" alt="The finished stegosaurus, partly coloured in"></figure></div>
+    </section>
+
+    <section id="grandparents" class="section wrap feature-row feature-reverse" aria-labelledby="gp-title">
+      <div class="feature-copy"><p class="eyebrow">For grandparents</p><h2 id="gp-title">Print a stack before they visit.</h2><p>Paperhops is easy to use without fuss: pick a subject, choose an age and press Print. There is nothing to set up and no account to create.</p><ul class="check-list"><li>Print a pile of pages before the grandchildren arrive</li><li>Choose by age: 3–5, 6–8 or 9+</li><li>The 9+ pages double as relaxing adult colouring, so you can colour side by side</li><li>Already bought Paperhops Pro? With Family Sharing, everyone in your Apple family group can use it</li></ul></div>
+      <div class="pair pair-leaf"><figure class="sheet"><img src="/assets/drawings/animals-lion-3.svg" width="200" height="200" loading="lazy" alt="A detailed lion page for a grown-up"></figure><figure class="sheet"><img src="/assets/drawings/animals-lion-1.svg" width="200" height="200" loading="lazy" alt="A simple lion page for a small child"></figure></div>
     </section>
 
     <section id="subjects" class="section wrap" aria-labelledby="subjects-title">
       <div class="section-heading"><p class="eyebrow">300 subjects</p><h2 id="subjects-title">Something for every kid.</h2><p>Lions and diggers, unicorns and rockets, cupcakes and castles. Search for a word or browse by category.</p></div>
-      <ul class="subjects" role="list"><li>Animals</li><li>Dinosaurs</li><li>Vehicles</li><li>Fantasy</li><li>Ocean</li><li>Space</li><li>Nature</li><li>Food &amp; treats</li><li>Holidays</li><li>Sports</li><li>Buildings</li><li>People</li><li>Music</li><li>Toys</li></ul>
+      <ul class="subjects" role="list"><li class="crayon-sky">Animals</li><li class="crayon-leaf">Dinosaurs</li><li class="crayon-plum">Vehicles</li><li class="crayon-tomato">Fantasy</li><li class="crayon-sunflower">Ocean</li><li class="crayon-sky">Space</li><li class="crayon-leaf">Nature</li><li class="crayon-plum">Food &amp; treats</li><li class="crayon-tomato">Holidays</li><li class="crayon-sunflower">Sports</li><li class="crayon-sky">Buildings</li><li class="crayon-leaf">People</li><li class="crayon-plum">Music</li><li class="crayon-tomato">Toys</li></ul>
     </section>
 
     <section id="printing" class="section wrap" aria-labelledby="print-title">
@@ -93,7 +104,7 @@
     <section id="pricing" class="section wrap" aria-labelledby="pricing-title">
       <div class="section-heading"><p class="eyebrow">Free and Pro</p><h2 id="pricing-title">Start free. Unlock it all once.</h2><p>Paperhops is free to download. One purchase unlocks the whole library, with no subscription.</p></div>
       <div class="plans">
-        <article class="plan" aria-labelledby="plan-free"><h3 id="plan-free">Free</h3><p class="plan-price">Free to download</p><p class="plan-note">Try it with your kids first.</p><ul class="check-list"><li>36 colouring pages, 12 at each level</li><li>The dot-to-dots that go with them</li><li>No ads and no account</li></ul></article>
+        <article class="plan" aria-labelledby="plan-free"><h3 id="plan-free">Free</h3><p class="plan-price">Free to download</p><p class="plan-note">Try it with the children first.</p><ul class="check-list"><li>36 colouring pages, 12 at each level</li><li>The dot-to-dots that go with them</li><li>No ads and no account</li></ul></article>
         <article class="plan plan-pro" aria-labelledby="plan-pro"><h3 id="plan-pro">Paperhops Pro</h3><p class="plan-price">One purchase · about $6.99</p><p class="plan-note">79 kr in Norway. Prices vary by country.</p><ul class="check-list"><li>All 300 subjects at three levels: 900 colouring pages</li><li>A dot-to-dot for every subject</li><li>Print as much as you like</li><li>Shared with your family through Family Sharing</li><li>No subscription and no ads</li></ul></article>
       </div>
     </section>
@@ -105,14 +116,14 @@
 
     <section class="section wrap" aria-labelledby="extras-title">
       <div class="section-heading"><h2 id="extras-title">Made for families.</h2></div>
-      <ul class="extras" role="list"><li><span class="extras-symbol" aria-hidden="true">◎</span><h3>Private by design</h3><p>No account, no ads and no tracking. Paperhops collects nothing about your family.</p></li><li><span class="extras-symbol" aria-hidden="true">✂</span><h3>Screen-free ideas</h3><p>When the colouring is done: puzzles, paper crafts, treasure hunts and outdoor missions.</p></li><li><span class="extras-symbol" aria-hidden="true">★</span><h3>Save the favourites</h3><p>Tap Save on a drawing your kids loved, so it is quick to find next time.</p></li><li><span class="extras-symbol" aria-hidden="true">▢</span><h3>iPhone and iPad</h3><p>Print from whichever device is closest. Paperhops works on both.</p></li></ul>
+      <ul class="extras" role="list"><li><span class="extras-symbol crayon-tomato" aria-hidden="true">◎</span><h3>Private by design</h3><p>No account, no ads and no tracking. Paperhops collects nothing about your family.</p></li><li><span class="extras-symbol crayon-sunflower" aria-hidden="true">✂</span><h3>Screen-free ideas</h3><p>When the colouring is done: puzzles, paper crafts, treasure hunts and outdoor missions.</p></li><li><span class="extras-symbol crayon-sky" aria-hidden="true">★</span><h3>Save the favourites</h3><p>Tap Save on a drawing your kids loved, so it is quick to find next time.</p></li><li><span class="extras-symbol crayon-leaf" aria-hidden="true">▢</span><h3>iPhone and iPad</h3><p>Print from whichever device is closest. Paperhops works on both.</p></li></ul>
     </section>
 
     <section class="download" aria-labelledby="download-title">
       <div class="wrap">
         <img class="app-icon" src="/assets/icons/favicon.svg" width="96" height="96" loading="lazy" alt="Paperhops app icon">
         <h2 id="download-title">Less screen.<br>More life.</h2>
-        <p>Get Paperhops and print something to colour today.</p>
+        <p>Swap some screen time for a page to colour today.</p>
         <!-- TODO(launch): placeholder App Store link, the app is not published yet. --><a class="store-link" href="https://apps.apple.com/app/paperhops"><img src="/assets/app-store-badge.svg" width="180" height="60" alt="Download on the App Store"></a>
         <!-- TODO(launch): drop "Coming soon" once the app is in the App Store. -->
         <p class="platform-note">Free to download <span aria-hidden="true">·</span> Paperhops Pro is a one-time purchase<br>Coming soon to the App Store</p>
