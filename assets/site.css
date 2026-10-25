@@ -40,6 +40,7 @@ a:focus-visible, select:focus-visible, button:focus-visible { outline: 3px solid
 .lang-bar-go { min-height: 36px; padding: 0 18px; border: 0; border-radius: var(--radius-pill); background: var(--color-text); color: var(--color-background); font: inherit; font-weight: 600; cursor: pointer; }
 .lang-bar-go:hover { opacity: .85; }
 .lang-bar-links { display: flex; align-items: center; gap: 10px; }
+.lang-bar-links[hidden] { display: none; }
 .lang-bar-links a { display: inline-flex; align-items: center; min-height: 36px; color: var(--color-text); }
 .lang-bar-links a[aria-current] { font-weight: 600; text-decoration: none; }
 

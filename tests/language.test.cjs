@@ -30,10 +30,11 @@ function visit({ languages = ['en-US'], saved = {}, pathname = '/', search = '',
     querySelector: selector => (selector === 'strong' ? strong : span)
   };
   const controls = { hidden: true };
+  const barLinks = { hidden: false };
   const links = ['en', 'nb'].map(language => element({ dataset: { languageLink: language } }));
   const bar = {
     querySelector(selector) {
-      return { select, '[data-language-continue]': button, '[data-language-text]': text, '[data-language-controls]': controls }[selector];
+      return { select, '[data-language-continue]': button, '[data-language-text]': text, '[data-language-controls]': controls, '[data-language-links]': barLinks }[selector];
     }
   };
   vm.runInNewContext(source, {
@@ -56,11 +57,13 @@ function visit({ languages = ['en-US'], saved = {}, pathname = '/', search = '',
     }
   });
   const choose = value => options.forEach(o => { o.selected = o.value === value; });
-  return { redirects, store, controls, select, options, button, strong, span, text, links, choose };
+  return { redirects, store, controls, barLinks, select, options, button, strong, span, text, links, choose };
 }
 
 test('the menu and Continue button replace the plain links', () => {
-  assert.equal(visit().controls.hidden, false);
+  const page = visit();
+  assert.equal(page.controls.hidden, false);
+  assert.equal(page.barLinks.hidden, true);
 });
 
 test('the current language is selected when the browser agrees', () => {

@@ -1,6 +1,6 @@
-// The language bar above the header, like apple.com's. It is in the HTML on every page, with
-// plain links for browsers without JavaScript; this script swaps those for a language menu and
-// a Continue button, and suggests the other language when the browser prefers it.
+// The language bar above the header, like apple.com's. It is in the HTML on every page with
+// plain English | Norsk links; once this script runs it swaps those for a language menu and a
+// Continue button, and suggests the other language when the browser prefers it.
 (() => {
   try {
     const preferenceKey = 'paperhops-language';
@@ -56,5 +56,7 @@
       if (language !== current) location.assign(target(language) + location.hash);
     });
     bar.querySelector('[data-language-controls]').hidden = false;
+    const links = bar.querySelector('[data-language-links]');
+    if (links) links.hidden = true;
   } catch { /* The bar's plain links still switch language. */ }
 })();
