@@ -229,32 +229,33 @@ const T = {
     navApp: 'Get the app',
     ages: { 1: 'Ages 3–5', 2: 'Ages 6–8', 3: 'Ages 9+' },
     agesFor: { 1: 'for ages 3–5', 2: 'for ages 6–8', 3: 'for ages 9+' },
+    agesForTitle: { 1: 'for ages 3–5', 2: 'for ages 6–8', 3: 'for ages 9+ and adults' },
     levelName: { 1: 'Little artists', 2: 'Young explorers', 3: 'Creative masters' },
     levelBlurb: {
       1: 'Big shapes and thick lines for little hands.',
       2: 'More parts to colour and a little more detail.',
-      3: 'Fine detail for older kids, and for grown-ups who like to colour too.',
+      3: 'Fine detail for older kids, and relaxing adult colouring for parents and grandparents to do side by side.',
     },
     levelPhrase: {
       1: 'with big shapes and thick lines for little hands',
       2: 'with more parts and a little more detail',
-      3: 'with fine detail for older kids and grown-ups',
+      3: 'with fine detail for older kids and relaxing adult colouring',
     },
     kb: (bytes) => `${Math.max(1, Math.round(bytes / 1024))} KB`,
-    galleryTitle: 'Free printable colouring pages for kids – PDF | Paperhops',
+    galleryTitle: 'Free printable colouring pages for kids – screen-free fun | Paperhops',
     galleryDescription: (c) =>
-      `${c.free} free printable colouring pages and ${c.dots} dot-to-dots for kids aged 3–5, 6–8 and 9+. Print-ready PDFs of lions, unicorns, dragons, rockets and more.`,
-    galleryH1: 'Free colouring pages to print',
+      `Free printable colouring pages for kids and grandparents: screen-free activities for ages 3–5, 6–8 and 9+. Swap 20 minutes of screen for a page to colour.`,
+    galleryH1: 'Free colouring pages for a screen-free moment',
     galleryLead: (c) =>
-      `${c.free} free colouring pages and ${c.dots} dot-to-dots from the Paperhops app, drawn at three levels for children from 3 to 9 and up. Every page is a print-ready A4 PDF: pick one, print it and get the crayons out.`,
+      `Swap 20 minutes of screen for a page to colour. These ${c.free} free printable colouring pages and ${c.dots} dot-to-dots are for parents and grandparents who want a calm, screen-free activity with the children: print a stack before the grandkids visit, and there is always something ready on the table. They come at three levels, from three-year-olds to grown-ups, and the 9+ pages double as relaxing adult colouring to do side by side.`,
     galleryJump: 'Jump to',
     galleryDots: 'with dot-to-dot',
-    whyTitle: 'Why print instead of a screen?',
+    whyTitle: 'Less screen time, more colouring',
     why: [
       ['Hands-on', 'Holding a crayon, staying inside the lines and choosing colours trains the small hand movements children later use to write.'],
       ['Calm, without notifications', 'A sheet of paper doesn’t ping, autoplay or ask for one more minute. Children settle into it at their own pace.'],
-      ['Something to keep', 'A finished page goes on the fridge, to grandma or into a folder: proof of an afternoon well spent.'],
-      ['Ready in a minute', 'Print a page while the kettle boils. No account, no sign-up, no ads.'],
+      ['Side by side', 'The detailed 9+ pages are relaxing adult colouring too. Sit down together, each with your own page.'],
+      ['Ready in a minute', 'Print a stack while the kettle boils, before the grandkids arrive. No account, no sign-up, no ads.'],
     ],
     ctaTitle: (c) => `${c.more} more pages in the app`,
     ctaBody: (c) =>
@@ -265,12 +266,14 @@ const T = {
     useBody:
       'Print as many copies as you like for your own family and the children you look after. Teachers and kindergarten staff may print copies for their own group. Please don’t sell the pages or upload the files elsewhere: share a link to the page instead.',
     copyright: `© ${YEAR} Paperhops (Torbjørn Nerbøvik). All rights reserved.`,
-    pageTitle: (s, l) => `${cap(s)} colouring page ${T.en.agesFor[l]} – free PDF | Paperhops`,
-    pageH1: (s, l) => `${cap(s)} colouring page ${T.en.agesFor[l]}`,
+    pageTitle: (s, l) => `Free printable ${s} colouring page ${T.en.agesForTitle[l]} | Paperhops`,
+    pageH1: (s, l) => `${cap(s)} colouring page ${T.en.agesForTitle[l]}`,
     pageDescription: (s, l, dots) =>
-      `Free printable ${s} colouring page ${T.en.agesFor[l]}, ${T.en.levelPhrase[l]}. Download the A4 PDF${dots ? ', plus a matching dot-to-dot' : ''}.`,
+      l === 3
+        ? `Free printable ${s} colouring page for ages 9+ and adults: relaxing, screen-free colouring to do side by side. Download the A4 PDF.`
+        : `Free printable ${s} colouring page ${T.en.agesFor[l]}: a calm, screen-free activity for kids and grandparents. Download the A4 PDF${dots ? ' and a matching dot-to-dot' : ''}.`,
     pageLead: (s, l) =>
-      `A free ${s} to print and colour, ${T.en.levelPhrase[l]}. Download the print-ready PDF and get the crayons out.`,
+      `A free ${s} to print and colour, ${T.en.levelPhrase[l]}. Swap a little screen time for crayons: download the print-ready PDF and you’re set.${l === 3 ? ' Grown-ups: print two and colour side by side.' : ''}`,
     alt: (s, l) => `${cap(s)} colouring page ${T.en.agesFor[l]}: a black outline drawing to print and colour`,
     dotsAlt: (s, count) => `${cap(s)} dot-to-dot with numbers from 1 to ${count}`,
     download: 'Download PDF',
@@ -305,32 +308,33 @@ const T = {
     navApp: 'Hent appen',
     ages: { 1: '3–5 år', 2: '6–8 år', 3: '9+ år' },
     agesFor: { 1: 'for 3–5 år', 2: 'for 6–8 år', 3: 'fra 9 år' },
+    agesForTitle: { 1: 'for 3–5 år', 2: 'for 6–8 år', 3: 'fra 9 år og for voksne' },
     levelName: { 1: 'Små kunstnere', 2: 'Unge oppdagere', 3: 'Kreative mestere' },
     levelBlurb: {
       1: 'Store former og tykke streker for små hender.',
       2: 'Flere deler å fargelegge og litt mer detaljer.',
-      3: 'Fine detaljer for store barn, og for voksne som også liker å fargelegge.',
+      3: 'Fine detaljer for store barn, og avslappende fargelegging for foreldre og besteforeldre å gjøre side om side.',
     },
     levelPhrase: {
       1: 'med store former og tykke streker for små hender',
       2: 'med flere deler og litt mer detaljer',
-      3: 'med fine detaljer for store barn og voksne',
+      3: 'med fine detaljer for store barn og avslappende fargelegging for voksne',
     },
     kb: (bytes) => `${Math.max(1, Math.round(bytes / 1024))} kB`,
-    galleryTitle: 'Gratis fargeleggingsark for barn – PDF | Paperhops',
+    galleryTitle: 'Gratis fargeleggingsark for barn – skjermfri aktivitet | Paperhops',
     galleryDescription: (c) =>
-      `${c.free} gratis fargeleggingsark og ${c.dots} prikk til prikk-ark for barn 3–5, 6–8 og 9+ år. PDF-er klare for utskrift, med løve, enhjørning, drage, rakett og mer.`,
-    galleryH1: 'Gratis fargeleggingsark å skrive ut',
+      `Gratis fargeleggingsark: fargelegging for barn som skjermfri aktivitet, for foreldre og besteforeldre. ${c.free} PDF-er og ${c.dots} prikk til prikk-ark for 3–5, 6–8 og 9+ år.`,
+    galleryH1: 'Gratis fargeleggingsark for en skjermfri stund',
     galleryLead: (c) =>
-      `${c.free} gratis fargeleggingsark og ${c.dots} prikk til prikk-ark fra Paperhops-appen, tegnet på tre nivåer for barn fra 3 til 9 år og eldre. Hvert ark er en PDF klar for utskrift på A4: velg et ark, skriv det ut og finn fram fargestiftene.`,
+      `Bytt 20 minutter skjerm mot et ark å fargelegge. Disse ${c.free} gratis fargeleggingsarkene og ${c.dots} prikk til prikk-arkene er for foreldre og besteforeldre som vil ha en rolig, skjermfri aktivitet sammen med barna: skriv ut en bunke før barnebarna kommer på besøk, så ligger det alltid noe klart på bordet. Arkene finnes på tre nivåer, fra treåringer til voksne, og arkene for 9+ år er også avslappende fargelegging for voksne, side om side.`,
     galleryJump: 'Gå til',
     galleryDots: 'med prikk til prikk',
-    whyTitle: 'Hvorfor papir i stedet for skjerm?',
+    whyTitle: 'Mindre skjermtid, mer fargelegging',
     why: [
       ['Med hendene', 'Å holde en fargestift, holde seg innenfor strekene og velge farger trener de små håndbevegelsene barn senere bruker når de skal skrive.'],
       ['Rolig, uten varsler', 'Et ark plinger ikke, starter ikke neste video og ber ikke om ett minutt til. Barna finner roen i sitt eget tempo.'],
-      ['Noe å ta vare på', 'Et ferdig ark havner på kjøleskapet, hos besteforeldrene eller i en perm: et minne fra en fin ettermiddag.'],
-      ['Klart på et minutt', 'Skriv ut et ark mens kaffen traktes. Ingen konto, ingen registrering, ingen reklame.'],
+      ['Side om side', 'De detaljerte arkene for 9+ år er avslappende fargelegging for voksne også. Sett dere ned sammen, med hvert deres ark.'],
+      ['Klart på et minutt', 'Skriv ut en bunke mens kaffen traktes, før barnebarna kommer. Ingen konto, ingen registrering, ingen reklame.'],
     ],
     ctaTitle: (c) => `${c.more} ark til i appen`,
     ctaBody: (c) =>
@@ -341,12 +345,14 @@ const T = {
     useBody:
       'Skriv ut så mange kopier du vil til din egen familie og barn du passer på. Lærere og barnehageansatte kan skrive ut kopier til sin egen barnegruppe. Ikke selg arkene eller last opp filene andre steder: del heller en lenke til siden.',
     copyright: `© ${YEAR} Paperhops (Torbjørn Nerbøvik). Alle rettigheter forbeholdt.`,
-    pageTitle: (s, l) => `Fargeleggingsark med ${s} ${T.no.agesFor[l]} – gratis PDF | Paperhops`,
-    pageH1: (s, l) => `Fargeleggingsark med ${s} ${T.no.agesFor[l]}`,
+    pageTitle: (s, l) => `Gratis fargeleggingsark med ${s} ${T.no.agesForTitle[l]} | Paperhops`,
+    pageH1: (s, l) => `Fargeleggingsark med ${s} ${T.no.agesForTitle[l]}`,
     pageDescription: (s, l, dots) =>
-      `Gratis fargeleggingsark med ${s} ${T.no.agesFor[l]}, ${T.no.levelPhrase[l]}. Last ned PDF for A4${dots ? ', med prikk til prikk i tillegg' : ''}.`,
+      l === 3
+        ? `Gratis fargeleggingsark med ${s} fra 9 år og for voksne: avslappende, skjermfri fargelegging side om side. Last ned PDF for A4.`
+        : `Gratis fargeleggingsark med ${s} ${T.no.agesFor[l]}: en rolig, skjermfri aktivitet for barn og besteforeldre. Last ned PDF for A4${dots ? ' og prikk til prikk' : ''}.`,
     pageLead: (s, l) =>
-      `Gratis fargeleggingsark med ${s}, ${T.no.levelPhrase[l]}. Last ned PDF-en, skriv den ut og finn fram fargestiftene.`,
+      `Gratis fargeleggingsark med ${s}, ${T.no.levelPhrase[l]}. Bytt litt skjermtid mot fargestifter: last ned PDF-en, skriv den ut, så er dere i gang.${l === 3 ? ' Voksne: skriv ut to og fargelegg side om side.' : ''}`,
     alt: (s, l) => `Fargeleggingsark med ${s} ${T.no.agesFor[l]}: svart strektegning å skrive ut og fargelegge`,
     dotsAlt: (s, count) => `Prikk til prikk med ${s}, med tall fra 1 til ${count}`,
     download: 'Last ned PDF',
