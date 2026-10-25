@@ -27,6 +27,7 @@ a:focus-visible, select:focus-visible, button:focus-visible { outline: 3px solid
 .primary-nav { display: flex; align-items: center; gap: 26px; margin-left: auto; font-size: 15px; font-weight: 600; }
 .primary-nav a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
 .primary-nav a:hover { color: var(--color-tint); }
+.nav-short { display: none; }
 .nav-download { background: var(--color-primary); color: var(--color-on-primary) !important; border-radius: var(--radius-pill); padding: 0 20px; }
 .nav-download:hover, .nav-download:active { background: var(--color-primary-pressed); }
 /* Language bar above the header on every page, like apple.com's (language.js). */
@@ -44,7 +45,7 @@ a:focus-visible, select:focus-visible, button:focus-visible { outline: 3px solid
 
 /* Hero */
 .hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; padding-block: 40px 72px; }
-.eyebrow { font-size: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: 1.8px; line-height: 1.5; margin-bottom: 20px; color: var(--color-tint); }
+.eyebrow { text-wrap: balance; font-size: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: 1.8px; line-height: 1.5; margin-bottom: 20px; color: var(--color-tint); }
 .hero h1 { font-size: clamp(56px, 6.4vw, 92px); margin-bottom: 26px; }
 .hero h1 span { color: var(--color-tint); }
 .hero-intro { max-width: 500px; font-size: 20px; color: var(--color-text-secondary); margin-bottom: 32px; }
@@ -205,6 +206,8 @@ a:focus-visible, select:focus-visible, button:focus-visible { outline: 3px solid
   .free-teaser .button { grid-column: 1 / -1; justify-self: start; }
 }
 @media (max-width: 720px) {
+  .nav-long { display: none; }
+  .nav-short { display: inline; }
   .wrap { width: calc(100% - 40px); }
   .section { padding-block: 60px; }
   .levels { grid-template-columns: 1fr; max-width: 280px; margin-inline: auto; gap: 44px; }
@@ -223,7 +226,7 @@ a:focus-visible, select:focus-visible, button:focus-visible { outline: 3px solid
   .lang-bar p { flex-basis: 100%; }
   .lang-bar-actions { flex: 1; }
   .lang-bar select { flex: 1; min-width: 0; }
-  .primary-nav { font-size: 14px; gap: 0 16px; }
+  .primary-nav { flex-wrap: nowrap; justify-content: space-between; gap: 0 8px; font-size: 14px; }
   .primary-nav .nav-download { display: none; }
   .hero h1 { font-size: clamp(46px, 13vw, 60px); }
   .hero-intro { font-size: 17px; }

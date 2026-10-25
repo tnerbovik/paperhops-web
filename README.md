@@ -35,7 +35,7 @@ Run the tests with `node --test tests/`.
 
 ## Message and look
 
-The site speaks to parents and grandparents who want a child off the tablet for a while: "Less screen. More life." The landing page has a "Why paper" section (calm focus, busy hands, their own ideas, time together; modest claims, no statistics) and a grandparents section. Titles and descriptions use phrases people search for: printable colouring pages, screen-free activities for kids, less screen time, skjermfri, fargeleggingsark.
+The site speaks to parents and grandparents who want a child off the tablet for a while: "Less screen. More life." The landing page has a "Why paper" section (calm focus, busy hands, their own ideas, time together; modest claims, no statistics) and a grandparents section. Titles and descriptions use phrases people search for: printable colouring pages, colouring pages for kids, less screen time, skjermfri, fargeleggingsark.
 
 Colours, radii, shadows and fonts are the app's design tokens (`src/constants/colors.ts` and `theme.ts` in the app project), defined once in `assets/theme.css` with a `prefers-color-scheme: dark` variant. Every page, including `/free/`, links it before its own stylesheet. `--brand-*` crayons (tomato, sunflower, sky, leaf, plum) are only for drawings, decorative marks and large shapes; text uses `--color-tint` or a `--color-*-ink` on its `--color-*-soft` fill, which keeps contrast at 4.5:1 or more. The age levels use sky (3–5), leaf (6–8) and plum (9+), as in the app. Headings use Fredoka 500/600, self-hosted from `assets/fonts/` (subset to Latin, SIL Open Font License in `assets/fonts/OFL.txt`) so the site makes no third-party requests. Drawings always sit on white sheets, in both light and dark mode.
 
