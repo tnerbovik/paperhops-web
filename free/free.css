@@ -63,22 +63,19 @@ p { margin: 0 0 1em; }
 .fp-footer p { margin: 0 0 0.4em; }
 .fp-footer-nav { display: flex; flex-wrap: wrap; gap: 4px 20px; margin: 10px 0 14px; }
 .fp-footer-nav a { color: var(--color-text); }
-.fp-footer-language { display: flex; align-items: center; gap: 10px; color: var(--color-text-secondary); }
-.fp-footer-language a { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-text); text-decoration: none; }
-.fp-footer-language a:hover { text-decoration: underline; }
-.fp-footer-language a[aria-current] { font-weight: 600; }
 
-/* Language suggestion (/assets/language.js), as on the main site. */
-.fp-lang-banner { background: var(--color-background-selected); border-bottom: 1px solid var(--color-border); font-size: 13px; }
-.fp-lang-banner[hidden] { display: none; }
-.fp-lang-banner .fp-wrap { display: flex; align-items: center; gap: 12px 20px; min-height: 60px; padding-block: 10px; }
-.fp-lang-banner p { flex: 1; margin: 0; line-height: 1.45; }
-.fp-lang-banner-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-.fp-lang-banner select { min-height: 36px; min-width: 130px; padding: 0 10px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-background-element); color: var(--color-text); font: inherit; cursor: pointer; }
-.fp-lang-banner-go { min-height: 36px; padding: 0 18px; border: 0; border-radius: var(--radius-pill); background: var(--color-text); color: var(--color-background); font: inherit; font-weight: 600; cursor: pointer; }
-.fp-lang-banner-go:hover { opacity: 0.85; }
-.fp-lang-banner-close { display: grid; place-items: center; width: 40px; height: 40px; margin-right: -10px; border: 0; border-radius: 50%; background: none; color: var(--color-text-secondary); font-size: 24px; line-height: 1; cursor: pointer; }
-.fp-lang-banner-close:hover { background: var(--color-border); color: var(--color-text); }
+/* Language bar (/assets/language.js), as on the main site: always shown, no close button. */
+.fp-lang-bar { background: var(--color-background-selected); border-bottom: 1px solid var(--color-border); font-size: 13px; }
+.fp-lang-bar .fp-wrap { display: flex; align-items: center; gap: 10px 20px; min-height: 60px; padding-block: 10px; }
+.fp-lang-bar p { flex: 1; margin: 0; line-height: 1.45; }
+.fp-lang-bar-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.fp-lang-bar-actions[hidden] { display: none; }
+.fp-lang-bar select { min-height: 36px; min-width: 130px; padding: 0 10px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-background-element); color: var(--color-text); font: inherit; cursor: pointer; }
+.fp-lang-bar-go { min-height: 36px; padding: 0 18px; border: 0; border-radius: var(--radius-pill); background: var(--color-text); color: var(--color-background); font: inherit; font-weight: 600; cursor: pointer; }
+.fp-lang-bar-go:hover { opacity: 0.85; }
+.fp-lang-bar-links { display: flex; align-items: center; gap: 10px; }
+.fp-lang-bar-links a { display: inline-flex; align-items: center; min-height: 36px; color: var(--color-text); }
+.fp-lang-bar-links a[aria-current] { font-weight: 600; text-decoration: none; }
 
 /* Shared bits */
 
@@ -169,10 +166,10 @@ h2 .fp-age { font-size: 1rem; margin-right: 6px; position: relative; top: -2px; 
   .fp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .fp-grid-small { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .fp-hero { padding-top: 28px; }
-  .fp-lang-banner .fp-wrap { flex-wrap: wrap; gap: 8px; padding-block: 10px 6px; }
-  .fp-lang-banner p { flex-basis: 100%; }
-  .fp-lang-banner-actions { flex: 1; }
-  .fp-lang-banner select { flex: 1; min-width: 0; }
+  .fp-lang-bar .fp-wrap { flex-wrap: wrap; gap: 8px; }
+  .fp-lang-bar p { flex-basis: 100%; }
+  .fp-lang-bar-actions { flex: 1; }
+  .fp-lang-bar select { flex: 1; min-width: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -181,5 +178,5 @@ h2 .fp-age { font-size: 1rem; margin-right: 6px; position: relative; top: -2px; 
 }
 
 @media print {
-  .fp-header, .fp-footer, .fp-cta, .fp-button, .fp-lang-banner { display: none; }
+  .fp-header, .fp-footer, .fp-cta, .fp-button, .fp-lang-bar { display: none; }
 }

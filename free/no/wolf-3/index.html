@@ -35,16 +35,16 @@
 </head>
 <body>
   <a class="fp-skip" href="#main">Gå til innholdet</a>
-  <aside class="fp-lang-banner" lang="en" aria-label="Language choice" data-language-banner hidden>
+  <div class="fp-lang-bar" role="region" aria-label="Språk" data-language-bar>
     <div class="fp-wrap">
-      <p><strong>View Paperhops in English.</strong><br>Choose the language you’d like to read the site in.</p>
-      <div class="fp-lang-banner-actions">
-        <select aria-label="Language"><option value="en" lang="en" data-label="English" selected>English</option><option value="nb" lang="nb" data-label="Norsk">Norsk</option></select>
-        <button type="button" class="fp-lang-banner-go" data-language-continue>Continue</button>
-        <button type="button" class="fp-lang-banner-close" data-language-close aria-label="Close"><span aria-hidden="true">×</span></button>
+      <p data-language-text data-suggest-title="View Paperhops in English." data-suggest-line="Choose the language you’d like to read the site in." data-suggest-button="Continue"><strong>Velg språk.</strong><br><span>Paperhops finnes på norsk og engelsk.</span></p>
+      <div class="fp-lang-bar-actions" data-language-controls hidden>
+        <select aria-label="Språk"><option value="en" lang="en" data-label="English">English</option><option value="nb" lang="nb" data-label="Norsk" selected>Norsk</option></select>
+        <button type="button" class="fp-lang-bar-go" data-language-continue>Fortsett</button>
       </div>
+      <noscript><nav class="fp-lang-bar-links" aria-label="Språk"><a href="/free/wolf-3/" lang="en" hreflang="en">English</a><span aria-hidden="true">|</span><a href="/free/no/wolf-3/" lang="nb" hreflang="nb" aria-current="true">Norsk</a></nav></noscript>
     </div>
-  </aside>
+  </div>
   <header class="fp-header">
     <div class="fp-wrap fp-header-inner">
       <a class="fp-brand" href="/no/" aria-label="Paperhops forside"><img src="/assets/icons/favicon.svg" width="40" height="40" alt=""><span class="fp-wordmark">Paperhops<span>.</span></span></a>
@@ -114,7 +114,6 @@
     <div class="fp-wrap">
       <p><strong>Paperhops</strong> · Fargeleggingsark og prikk til prikk å skrive ut.</p>
       <nav class="fp-footer-nav" aria-label="Bunnmeny"><a href="/free/no/">Gratis fargeleggingsark</a><a href="/no/support/">Hjelp</a><a href="/no/privacy/">Personvern</a><a href="/no/terms/">Vilkår</a><a href="mailto:hello@paperhops.app">hello@paperhops.app</a></nav>
-      <nav class="fp-footer-language" aria-label="Språk"><a href="/free/wolf-3/" lang="en" hreflang="en" data-language-link="en">English</a><span aria-hidden="true">|</span><a href="/free/no/wolf-3/" lang="nb" hreflang="nb" data-language-link="nb" aria-current="true">Norsk</a></nav>
       <p class="fp-muted">© 2026 Paperhops (Torbjørn Nerbøvik). Alle rettigheter forbeholdt.</p>
     </div>
   </footer>

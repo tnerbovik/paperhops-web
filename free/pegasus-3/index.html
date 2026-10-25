@@ -35,16 +35,16 @@
 </head>
 <body>
   <a class="fp-skip" href="#main">Skip to content</a>
-  <aside class="fp-lang-banner" lang="nb" aria-label="Språkvalg" data-language-banner hidden>
+  <div class="fp-lang-bar" role="region" aria-label="Language" data-language-bar>
     <div class="fp-wrap">
-      <p><strong>Se Paperhops på norsk.</strong><br>Velg språket du vil lese nettsiden på.</p>
-      <div class="fp-lang-banner-actions">
-        <select aria-label="Språk"><option value="en" lang="en" data-label="English">English</option><option value="nb" lang="nb" data-label="Norsk" selected>Norsk</option></select>
-        <button type="button" class="fp-lang-banner-go" data-language-continue>Fortsett</button>
-        <button type="button" class="fp-lang-banner-close" data-language-close aria-label="Lukk"><span aria-hidden="true">×</span></button>
+      <p data-language-text data-suggest-title="Se Paperhops på norsk." data-suggest-line="Velg språket du vil lese nettsiden på." data-suggest-button="Fortsett"><strong>Choose your language.</strong><br><span>Paperhops is available in English and Norwegian.</span></p>
+      <div class="fp-lang-bar-actions" data-language-controls hidden>
+        <select aria-label="Language"><option value="en" lang="en" data-label="English" selected>English</option><option value="nb" lang="nb" data-label="Norsk">Norsk</option></select>
+        <button type="button" class="fp-lang-bar-go" data-language-continue>Continue</button>
       </div>
+      <noscript><nav class="fp-lang-bar-links" aria-label="Language"><a href="/free/pegasus-3/" lang="en" hreflang="en" aria-current="true">English</a><span aria-hidden="true">|</span><a href="/free/no/pegasus-3/" lang="nb" hreflang="nb">Norsk</a></nav></noscript>
     </div>
-  </aside>
+  </div>
   <header class="fp-header">
     <div class="fp-wrap fp-header-inner">
       <a class="fp-brand" href="/" aria-label="Paperhops home"><img src="/assets/icons/favicon.svg" width="40" height="40" alt=""><span class="fp-wordmark">Paperhops<span>.</span></span></a>
@@ -114,7 +114,6 @@
     <div class="fp-wrap">
       <p><strong>Paperhops</strong> · Colouring pages and dot-to-dots to print.</p>
       <nav class="fp-footer-nav" aria-label="Footer"><a href="/free/">Free colouring pages</a><a href="/support/">Support</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="mailto:hello@paperhops.app">hello@paperhops.app</a></nav>
-      <nav class="fp-footer-language" aria-label="Language"><a href="/free/pegasus-3/" lang="en" hreflang="en" data-language-link="en" aria-current="true">English</a><span aria-hidden="true">|</span><a href="/free/no/pegasus-3/" lang="nb" hreflang="nb" data-language-link="nb">Norsk</a></nav>
       <p class="fp-muted">© 2026 Paperhops (Torbjørn Nerbøvik). All rights reserved.</p>
     </div>
   </footer>

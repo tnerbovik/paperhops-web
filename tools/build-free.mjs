@@ -224,16 +224,15 @@ const T = {
     ogLocale: 'en_GB',
     root: '/free/',
     other: 'no',
-    // The language banner on the Norwegian pages suggests English, so it is written in English.
-    banner: {
-      label: 'Language choice',
-      title: 'View Paperhops in English.',
-      body: 'Choose the language you’d like to read the site in.',
-      select: 'Language',
+    // The language bar. `suggest*` is what a Norwegian page shows a visitor who prefers English.
+    bar: {
+      label: 'Language',
+      title: 'Choose your language.',
+      line: 'Paperhops is available in English and Norwegian.',
       go: 'Continue',
-      close: 'Close',
+      suggestTitle: 'View Paperhops in English.',
+      suggestLine: 'Choose the language you’d like to read the site in.',
     },
-    footerLanguage: 'Language',
     navFree: 'Free pages',
     navApp: 'Get the app',
     ages: { 1: 'Ages 3–5', 2: 'Ages 6–8', 3: 'Ages 9+' },
@@ -312,15 +311,14 @@ const T = {
     ogLocale: 'nb_NO',
     root: '/free/no/',
     other: 'en',
-    banner: {
-      label: 'Språkvalg',
-      title: 'Se Paperhops på norsk.',
-      body: 'Velg språket du vil lese nettsiden på.',
-      select: 'Språk',
+    bar: {
+      label: 'Språk',
+      title: 'Velg språk.',
+      line: 'Paperhops finnes på norsk og engelsk.',
       go: 'Fortsett',
-      close: 'Lukk',
+      suggestTitle: 'Se Paperhops på norsk.',
+      suggestLine: 'Velg språket du vil lese nettsiden på.',
     },
-    footerLanguage: 'Språk',
     navFree: 'Gratis ark',
     navApp: 'Hent appen',
     ages: { 1: '3–5 år', 2: '6–8 år', 3: '9+ år' },
@@ -457,32 +455,35 @@ function head({ lang, title, description, path: urlPath, otherPath, image, image
 }
 
 /**
- * The main site's language suggestion, like apple.com's: /assets/language.js shows it above the
- * header when the visitor prefers the other language, and "Continue" goes to the page's
- * hreflang counterpart. It is written in the language it suggests.
+ * The main site's language bar, always shown above the header, like apple.com's. Without
+ * JavaScript it offers plain links to this page in each language; /assets/language.js swaps them
+ * for a menu and a Continue button that goes to the page's hreflang counterpart, and suggests the
+ * other language (in that language) when the visitor prefers it.
  */
-function languageBanner(lang) {
-  const other = T[lang].other;
-  const b = T[other].banner;
+function languageBar(lang, paths) {
+  const t = T[lang];
+  const other = T[t.other];
   const option = (code) =>
-    `<option value="${T[code].htmlLang}" lang="${T[code].htmlLang}" data-label="${T[code].languageName}"${code === other ? ' selected' : ''}>${T[code].languageName}</option>`;
-  return `<aside class="fp-lang-banner" lang="${T[other].htmlLang}" aria-label="${b.label}" data-language-banner hidden>
+    `<option value="${T[code].htmlLang}" lang="${T[code].htmlLang}" data-label="${T[code].languageName}"${code === lang ? ' selected' : ''}>${T[code].languageName}</option>`;
+  const link = (code) =>
+    `<a href="${paths[code]}" lang="${T[code].htmlLang}" hreflang="${T[code].htmlLang}"${code === lang ? ' aria-current="true"' : ''}>${T[code].languageName}</a>`;
+  return `<div class="fp-lang-bar" role="region" aria-label="${t.bar.label}" data-language-bar>
     <div class="fp-wrap">
-      <p><strong>${b.title}</strong><br>${b.body}</p>
-      <div class="fp-lang-banner-actions">
-        <select aria-label="${b.select}">${option('en')}${option('no')}</select>
-        <button type="button" class="fp-lang-banner-go" data-language-continue>${b.go}</button>
-        <button type="button" class="fp-lang-banner-close" data-language-close aria-label="${b.close}"><span aria-hidden="true">×</span></button>
+      <p data-language-text data-suggest-title="${esc(other.bar.suggestTitle)}" data-suggest-line="${esc(other.bar.suggestLine)}" data-suggest-button="${other.bar.go}"><strong>${t.bar.title}</strong><br><span>${t.bar.line}</span></p>
+      <div class="fp-lang-bar-actions" data-language-controls hidden>
+        <select aria-label="${t.bar.label}">${option('en')}${option('no')}</select>
+        <button type="button" class="fp-lang-bar-go" data-language-continue>${t.bar.go}</button>
       </div>
+      <noscript><nav class="fp-lang-bar-links" aria-label="${t.bar.label}">${link('en')}<span aria-hidden="true">|</span>${link('no')}</nav></noscript>
     </div>
-  </aside>`;
+  </div>`;
 }
 
-function header(lang) {
+function header(lang, paths) {
   const t = T[lang];
   return `<body>
   <a class="fp-skip" href="#main">${lang === 'no' ? 'Gå til innholdet' : 'Skip to content'}</a>
-  ${languageBanner(lang)}
+  ${languageBar(lang, paths)}
   <header class="fp-header">
     <div class="fp-wrap fp-header-inner">
       <a class="fp-brand" href="${HOME[lang]}" aria-label="${lang === 'no' ? 'Paperhops forside' : 'Paperhops home'}"><img src="/assets/icons/favicon.svg" width="40" height="40" alt=""><span class="fp-wordmark">Paperhops<span>.</span></span></a>
@@ -494,17 +495,12 @@ function header(lang) {
   </header>`;
 }
 
-/** Plain links to this page in each language; they work without JavaScript. */
-function footer(lang, paths) {
+function footer(lang) {
   const t = T[lang];
-  const languages = ['en', 'no']
-    .map((code) => `<a href="${paths[code]}" lang="${T[code].htmlLang}" hreflang="${T[code].htmlLang}" data-language-link="${T[code].htmlLang}"${code === lang ? ' aria-current="true"' : ''}>${T[code].languageName}</a>`)
-    .join('<span aria-hidden="true">|</span>');
   return `  <footer class="fp-footer">
     <div class="fp-wrap">
       <p><strong>Paperhops</strong> · ${t.footerTagline}</p>
       <nav class="fp-footer-nav" aria-label="${lang === 'no' ? 'Bunnmeny' : 'Footer'}">${t.footerLinks.map(([label, href]) => `<a href="${href}">${label}</a>`).join('')}<a href="mailto:hello@paperhops.app">hello@paperhops.app</a></nav>
-      <nav class="fp-footer-language" aria-label="${t.footerLanguage}">${languages}</nav>
       <p class="fp-muted">${esc(t.copyright)}</p>
     </div>
   </footer>
@@ -580,7 +576,7 @@ function galleryHtml(lang, pages, counts) {
     imageSize: 800,
     jsonld,
   })}
-${header(lang)}
+${header(lang, { [lang]: urlPath, [t.other]: otherPath })}
   <main id="main">
     <section class="fp-hero">
       <div class="fp-wrap">
@@ -606,7 +602,7 @@ ${header(lang)}
       <p>${esc(t.useBody)}</p>
     </section>
   </main>
-${footer(lang, { [lang]: urlPath, [t.other]: otherPath })}`;
+${footer(lang)}`;
 }
 
 function detailHtml(lang, page, pages, counts) {
@@ -677,7 +673,7 @@ function detailHtml(lang, page, pages, counts) {
   };
 
   return `${head({ lang, title: t.pageTitle(name, page.level), description, path: urlPath, otherPath, image, imageAlt: alt, imageSize: 800, jsonld })}
-${header(lang)}
+${header(lang, { [lang]: urlPath, [t.other]: otherPath })}
   <main id="main">
     <div class="fp-wrap">
       <nav class="fp-crumbs" aria-label="${lang === 'no' ? 'Brødsmuler' : 'Breadcrumb'}"><a href="${t.root}">${t.breadcrumbFree}</a> <span aria-hidden="true">›</span> <a href="${t.root}#level-${page.level}">${t.ages[page.level]}</a> <span aria-hidden="true">›</span> <span aria-current="page">${esc(cap(name))}</span></nav>
@@ -716,7 +712,7 @@ ${header(lang)}
       </section>
     </div>
   </main>
-${footer(lang, { [lang]: urlPath, [t.other]: otherPath })}`;
+${footer(lang)}`;
 }
 
 function sitemapXml(pages) {
