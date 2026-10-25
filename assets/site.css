@@ -67,7 +67,7 @@ a:focus-visible, select:focus-visible { outline: 3px solid var(--brand-tomato); 
   .hero-copy { animation: rise .6s cubic-bezier(.22, 1, .36, 1) .05s backwards; }
   .hero-visual { animation: rise .7s cubic-bezier(.22, 1, .36, 1) .15s backwards; }
 }
-.trust-strip { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; list-style: none; padding: 0 0 56px; margin: 0; }
+.trust-strip { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; list-style: none; padding: 0 0 56px; margin-block: 0; }
 .trust-strip li { background: var(--color-background-selected); border-radius: var(--radius-pill); padding: 10px 18px; font-size: 15px; font-weight: 600; }
 .trust-strip li:before { content: "✓"; color: var(--color-tint); margin-right: 8px; }
 
