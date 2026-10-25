@@ -65,4 +65,6 @@ Set these records at the registrar for paperhops.app. Remove any other A, AAAA o
 | AAAA | @ | 2606:50c0:8003::153 |
 | CNAME | www | tnerbovik.github.io |
 
+On 25 October 2026 the domain used Dynadot name servers, and public DNS (1.1.1.1) already returned exactly these A, AAAA and `www` CNAME records.
+
 GitHub redirects `www.paperhops.app` to `paperhops.app` once both are correct. To protect the domain from takeover, verify it under GitHub → Settings → Pages → Verified domains; GitHub then shows a TXT record (`_github-pages-challenge-tnerbovik`) to add at the registrar.
