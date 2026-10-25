@@ -394,7 +394,7 @@ function esc(text) {
 // ---------------------------------------------------------------------------------------------
 // HTML
 
-/** The main site's icons and self-hosted Fredoka (no font requests to third parties). */
+/** The main site's icons, and a preload of the self-hosted Fredoka that /assets/theme.css declares. */
 const SHARED_LINKS = `<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
   <link rel="icon" type="image/svg+xml" sizes="any" href="/assets/icons/favicon.svg">
@@ -421,6 +421,7 @@ function head({ lang, title, description, path: urlPath, otherPath, image, image
   <link rel="alternate" hreflang="nb" href="${SITE + noPath}">
   <link rel="alternate" hreflang="x-default" href="${SITE + enPath}">
   ${SHARED_LINKS}
+  <link rel="stylesheet" href="/assets/theme.css">
   <link rel="stylesheet" href="/free/free.css">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Paperhops">
