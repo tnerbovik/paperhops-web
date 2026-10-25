@@ -1,0 +1,13 @@
+{
+  "name": "paperhops-web-tools",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build-free": "node build-free.mjs"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "pdf-lib": "^1.17.1",
+    "sharp": "^0.34.3"
+  }
+}
