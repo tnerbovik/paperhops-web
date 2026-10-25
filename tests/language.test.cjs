@@ -14,84 +14,123 @@ const pages = {
   '/untranslated/': { lang: 'en' }
 };
 
-function visit({ languages = ['en-US'], saved, pathname = '/', search = '', hash = '', blocked = false } = {}) {
+const element = () => ({ listeners: {}, addEventListener(event, callback) { this.listeners[event] = callback; } });
+
+function visit({ languages = ['en-US'], saved = {}, pathname = '/', search = '', hash = '', blocked = false } = {}) {
   const page = pages[pathname];
   const redirects = [];
-  const picker = { value: page.lang, disabled: true, listeners: {}, addEventListener(event, callback) { this.listeners[event] = callback; } };
-  let preference = saved;
+  const store = { ...saved };
+  const other = page.lang === 'en' ? 'nb' : 'en';
+  const options = ['en', 'nb'].map(value => ({ value, selected: value === other, textContent: '', dataset: { label: value === 'en' ? 'English' : 'Norsk' } }));
+  const select = { ...element(), options, get value() { return options.find(o => o.selected).value; } };
+  const buttons = { continue: element(), close: element() };
+  const banner = {
+    hidden: true,
+    querySelector(selector) {
+      if (selector === 'select') return select;
+      return selector.includes('continue') ? buttons.continue : buttons.close;
+    }
+  };
+  const footerLinks = ['en', 'nb'].map(language => ({ ...element(), dataset: { languageLink: language } }));
   vm.runInNewContext(source, {
     navigator: { languages, language: languages[0] },
     location: { pathname, search, hash, replace(url) { redirects.push(url); }, assign(url) { redirects.push(url); } },
     localStorage: {
-      getItem() { if (blocked) throw new Error('Storage unavailable'); return preference; },
-      setItem(key, value) { if (blocked) throw new Error('Storage unavailable'); preference = value; }
+      getItem(key) { if (blocked) throw new Error('Storage unavailable'); return store[key] ?? null; },
+      setItem(key, value) { if (blocked) throw new Error('Storage unavailable'); store[key] = value; }
     },
     URL,
     URLSearchParams,
     document: {
       documentElement: { lang: page.lang },
+      querySelectorAll() { return footerLinks; },
       querySelector(selector) {
-        if (selector === '[data-language-select]') return picker;
+        if (selector === '[data-language-banner]') return banner;
         const language = selector.match(/hreflang="(\w+)"/)?.[1];
         return page[language] ? { getAttribute: () => page[language] } : null;
       }
     }
   });
-  return { redirects, preference: () => preference, picker };
+  const choose = value => options.forEach(o => { o.selected = o.value === value; });
+  return { redirects, store, banner, select, options, buttons, footerLinks, choose };
 }
 
-test('Norwegian browser preferences open the Norwegian page and preserve the section', () => {
+test('Norwegian browsers see the banner on English pages, and are not redirected', () => {
   for (const language of ['nb-NO', 'nn-NO', 'no']) {
-    assert.deepEqual(visit({ languages: [language], hash: '#levels' }).redirects, ['/no/#levels']);
+    const page = visit({ languages: [language] });
+    assert.equal(page.banner.hidden, false);
+    assert.deepEqual(page.redirects, []);
   }
 });
 
-test('subpages open their own Norwegian counterpart', () => {
-  assert.deepEqual(visit({ languages: ['nb-NO'], pathname: '/support/' }).redirects, ['/no/support/']);
+test('English browsers see the banner on Norwegian pages', () => {
+  assert.equal(visit({ pathname: '/no/', languages: ['en-GB'] }).banner.hidden, false);
 });
 
-test('pages without a Norwegian counterpart never redirect', () => {
-  assert.deepEqual(visit({ languages: ['nb-NO'], pathname: '/untranslated/' }).redirects, []);
+test('the banner stays hidden when the page is already in the preferred language', () => {
+  assert.equal(visit({ languages: ['en-GB', 'nb-NO'] }).banner.hidden, true);
+  assert.equal(visit({ pathname: '/no/', languages: ['nb-NO'] }).banner.hidden, true);
+  assert.equal(visit({ languages: ['fr-FR'] }).banner.hidden, true);
 });
 
-test('English takes precedence when it is preferred over Norwegian', () => {
-  assert.deepEqual(visit({ languages: ['en-GB', 'nb-NO'] }).redirects, []);
+test('unsupported languages fall through to the first supported preference', () => {
+  assert.equal(visit({ languages: ['fr-FR', 'nb-NO', 'en'] }).banner.hidden, false);
 });
 
-test('unsupported languages fall back to the first supported preference', () => {
-  assert.deepEqual(visit({ languages: ['fr-FR', 'nb-NO', 'en'] }).redirects, ['/no/']);
-  assert.deepEqual(visit({ languages: ['fr-FR'] }).redirects, []);
+test('pages without a counterpart never show the banner', () => {
+  assert.equal(visit({ pathname: '/untranslated/', languages: ['nb-NO'] }).banner.hidden, true);
 });
 
-test('a remembered language overrides browser preference', () => {
-  assert.deepEqual(visit({ saved: 'en', languages: ['nb-NO'] }).redirects, []);
-  assert.deepEqual(visit({ saved: 'nb' }).redirects, ['/no/']);
+test('a remembered choice overrides the browser languages', () => {
+  assert.equal(visit({ languages: ['nb-NO'], saved: { 'paperhops-language': 'en' } }).banner.hidden, true);
+  assert.equal(visit({ languages: ['en-US'], saved: { 'paperhops-language': 'nb' } }).banner.hidden, false);
 });
 
-test('direct Norwegian URLs stay Norwegian even with an English preference', () => {
-  assert.deepEqual(visit({ pathname: '/no/', saved: 'en' }).redirects, []);
+test('Continue opens the same page in the chosen language and remembers it', () => {
+  const page = visit({ pathname: '/no/privacy/', languages: ['en-US'], hash: '#contact' });
+  page.buttons.continue.listeners.click();
+  assert.deepEqual(page.redirects, ['/privacy/#contact']);
+  assert.equal(page.store['paperhops-language'], 'en');
 });
 
-test('explicit English selection works when storage is blocked', () => {
-  assert.deepEqual(visit({ languages: ['nb-NO'], search: '?lang=en', blocked: true }).redirects, []);
+test('choosing the current language in the banner just closes it', () => {
+  const page = visit({ languages: ['nb-NO'] });
+  page.choose('en');
+  page.buttons.continue.listeners.click();
+  assert.equal(page.banner.hidden, true);
+  assert.deepEqual(page.redirects, []);
+  assert.equal(page.store['paperhops-language'], 'en');
 });
 
-test('automatic selection still works when storage is blocked', () => {
-  assert.deepEqual(visit({ languages: ['nn-NO'], blocked: true }).redirects, ['/no/']);
+test('the selected option is marked with a check', () => {
+  const page = visit({ languages: ['nb-NO'] });
+  assert.deepEqual(page.options.map(o => o.textContent), ['English', '✓ Norsk']);
+  page.choose('en');
+  page.select.listeners.change();
+  assert.deepEqual(page.options.map(o => o.textContent), ['✓ English', 'Norsk']);
 });
 
-test('the language dropdown remembers the choice and opens the same page', () => {
-  const page = visit({ pathname: '/no/privacy/', hash: '#contact' });
-  page.picker.value = 'en';
-  page.picker.listeners.change();
-  assert.equal(page.preference(), 'en');
-  assert.deepEqual(page.redirects, ['/privacy/?lang=en#contact']);
-  assert.equal(page.picker.disabled, false);
+test('closing the banner keeps it closed on later visits', () => {
+  const page = visit({ languages: ['nb-NO'] });
+  page.buttons.close.listeners.click();
+  assert.equal(page.banner.hidden, true);
+  assert.equal(visit({ languages: ['nb-NO'], saved: page.store }).banner.hidden, true);
 });
 
-test('the dropdown switches to Norwegian even when storage is blocked', () => {
-  const page = visit({ blocked: true, hash: '#pricing' });
-  page.picker.value = 'nb';
-  page.picker.listeners.change();
-  assert.deepEqual(page.redirects, ['/no/#pricing']);
+test('everything still works when storage is blocked', () => {
+  const page = visit({ languages: ['nb-NO'], blocked: true });
+  assert.equal(page.banner.hidden, false);
+  page.buttons.continue.listeners.click();
+  assert.deepEqual(page.redirects, ['/no/']);
+});
+
+test('footer links and ?lang= remember an explicit choice', () => {
+  const page = visit({ languages: ['nb-NO'], search: '?lang=en' });
+  assert.equal(page.banner.hidden, true);
+  page.footerLinks[1].listeners.click();
+  assert.equal(page.store['paperhops-language'], 'nb');
+});
+
+test('?lang-banner forces the banner for testing', () => {
+  assert.equal(visit({ languages: ['en-US'], search: '?lang-banner=1' }).banner.hidden, false);
 });

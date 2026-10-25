@@ -34,6 +34,16 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <aside class="lang-banner" lang="nb" aria-label="Språkvalg" data-language-banner hidden>
+    <div class="wrap">
+      <p><strong>Se Paperhops på norsk.</strong><br>Velg språket du vil lese nettsiden på.</p>
+      <div class="lang-banner-actions">
+        <select aria-label="Språk"><option value="en" lang="en" data-label="English">English</option><option value="nb" lang="nb" data-label="Norsk" selected>Norsk</option></select>
+        <button type="button" class="lang-banner-go" data-language-continue>Fortsett</button>
+        <button type="button" class="lang-banner-close" data-language-close aria-label="Lukk"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </aside>
   <header class="site-header wrap">
     <a class="brand" href="/" aria-label="Paperhops home"><img src="/assets/icons/favicon.svg" width="40" height="40" alt=""><span class="wordmark">Paperhops<span>.</span></span></a>
     <nav class="primary-nav" aria-label="Main navigation">
@@ -45,8 +55,6 @@
       <!-- TODO(launch): placeholder App Store link, the app is not published yet. -->
       <a class="nav-download" href="https://apps.apple.com/app/paperhops">Get the app <span aria-hidden="true">↗</span></a>
     </nav>
-    <label class="language-picker"><span>Language</span><select data-language-select disabled><option value="en" lang="en" selected>English</option><option value="nb" lang="nb">Norsk</option></select></label>
-    <noscript><nav class="language-fallback" aria-label="Language"><a href="/support/?lang=en" lang="en" hreflang="en">English</a><a href="/no/support/" lang="nb" hreflang="nb">Norsk</a></nav></noscript>
   </header>
   <main id="main" class="doc wrap">
     <h1>Support</h1>
@@ -76,7 +84,11 @@
           <a href="/terms/">Terms</a>
         </nav>
       </div>
-      <div class="footer-bottom"><span>© 2026 Paperhops (Torbjørn Nerbøvik)</span><a href="mailto:hello@paperhops.app">hello@paperhops.app</a></div>
+      <div class="footer-bottom">
+        <span>© 2026 Paperhops (Torbjørn Nerbøvik)</span>
+        <nav class="footer-language" aria-label="Language"><a href="/support/" lang="en" hreflang="en" data-language-link="en" aria-current="true">English</a><span aria-hidden="true">|</span><a href="/no/support/" lang="nb" hreflang="nb" data-language-link="nb">Norsk</a></nav>
+        <a href="mailto:hello@paperhops.app">hello@paperhops.app</a>
+      </div>
     </div>
   </footer>
 </body>

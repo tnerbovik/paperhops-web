@@ -27,7 +27,11 @@ Also make sure hello@paperhops.app receives mail: it is the contact address on e
 
 ## Languages
 
-English lives at the root and Norwegian under `/no/`, with the same page paths. Every translated page declares its counterpart with `<link rel="alternate" hreflang="…">`. On an English page with a Norwegian counterpart, `assets/language.js` opens the Norwegian page when the visitor's saved choice or browser languages (nb, nn, no) prefer Norwegian. A direct `/no/` link always stays Norwegian, and `?lang=en` keeps English even when browser storage is blocked. The header dropdown switches to the same page in the other language and remembers the choice. Pages without a Norwegian alternate never redirect.
+English lives at the root and Norwegian under `/no/`, with the same page paths. Every translated page declares its counterpart with `<link rel="alternate" hreflang="…">`.
+
+Like apple.com, the site never redirects. When the browser languages (nb, nn, no or en) or an earlier choice prefer the other language, `assets/language.js` shows a banner above the header, written in that language ("Se Paperhops på norsk." / "View Paperhops in English."), with a language menu, Continue and ×. Continue opens the same page in the chosen language and remembers the choice; × hides the banner for that language from then on. Pages without a counterpart never show it, and without JavaScript or storage the page renders normally. Add `?lang-banner=1` to a URL to force the banner while testing.
+
+The footer has plain English | Norsk links on every page, which work without JavaScript and also remember the choice.
 
 Run the tests with `node --test tests/`.
 
