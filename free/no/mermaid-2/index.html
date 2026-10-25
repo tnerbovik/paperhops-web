@@ -19,6 +19,7 @@
   <link rel="preload" href="/assets/fonts/fredoka-600.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/theme.css">
   <link rel="stylesheet" href="/free/free.css">
+  <script src="/assets/language.js" defer></script>
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Paperhops">
   <meta property="og:locale" content="nb_NO">
@@ -34,12 +35,21 @@
 </head>
 <body>
   <a class="fp-skip" href="#main">Gå til innholdet</a>
+  <aside class="fp-lang-banner" lang="en" aria-label="Language choice" data-language-banner hidden>
+    <div class="fp-wrap">
+      <p><strong>View Paperhops in English.</strong><br>Choose the language you’d like to read the site in.</p>
+      <div class="fp-lang-banner-actions">
+        <select aria-label="Language"><option value="en" lang="en" data-label="English" selected>English</option><option value="nb" lang="nb" data-label="Norsk">Norsk</option></select>
+        <button type="button" class="fp-lang-banner-go" data-language-continue>Continue</button>
+        <button type="button" class="fp-lang-banner-close" data-language-close aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </aside>
   <header class="fp-header">
     <div class="fp-wrap fp-header-inner">
       <a class="fp-brand" href="/no/" aria-label="Paperhops forside"><img src="/assets/icons/favicon.svg" width="40" height="40" alt=""><span class="fp-wordmark">Paperhops<span>.</span></span></a>
       <nav aria-label="Hovedmeny">
         <a href="/free/no/">Gratis ark</a>
-        <a href="/free/mermaid-2/" hreflang="en" lang="en" title="Read in English">English</a>
         <a class="fp-nav-app" href="/no/">Hent appen</a>
       </nav>
     </div>
@@ -104,6 +114,7 @@
     <div class="fp-wrap">
       <p><strong>Paperhops</strong> · Fargeleggingsark og prikk til prikk å skrive ut.</p>
       <nav class="fp-footer-nav" aria-label="Bunnmeny"><a href="/free/no/">Gratis fargeleggingsark</a><a href="/no/support/">Hjelp</a><a href="/no/privacy/">Personvern</a><a href="/no/terms/">Vilkår</a><a href="mailto:hello@paperhops.app">hello@paperhops.app</a></nav>
+      <nav class="fp-footer-language" aria-label="Språk"><a href="/free/mermaid-2/" lang="en" hreflang="en" data-language-link="en">English</a><span aria-hidden="true">|</span><a href="/free/no/mermaid-2/" lang="nb" hreflang="nb" data-language-link="nb" aria-current="true">Norsk</a></nav>
       <p class="fp-muted">© 2026 Paperhops (Torbjørn Nerbøvik). Alle rettigheter forbeholdt.</p>
     </div>
   </footer>
