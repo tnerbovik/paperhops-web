@@ -19,6 +19,9 @@
     const other = current === 'en' ? 'nb' : 'en';
     const params = new URLSearchParams(location.search);
     if (supported(params.get('lang'))) storage.set(preferenceKey, params.get('lang'));
+    for (const link of document.querySelectorAll('[data-language-link]')) {
+      link.addEventListener('click', () => storage.set(preferenceKey, link.dataset.languageLink));
+    }
 
     const bar = document.querySelector('[data-language-bar]');
     if (!bar) return;
@@ -46,11 +49,6 @@
       for (const option of select.options) option.selected = option.value === other;
     }
 
-    const markChoice = () => {
-      for (const option of select.options) option.textContent = (option.selected ? '✓ ' : '') + option.dataset.label;
-    };
-    markChoice();
-    select.addEventListener('change', markChoice);
     button.addEventListener('click', () => {
       const language = select.value;
       if (!supported(language)) return;

@@ -30,6 +30,7 @@ function visit({ languages = ['en-US'], saved = {}, pathname = '/', search = '',
     querySelector: selector => (selector === 'strong' ? strong : span)
   };
   const controls = { hidden: true };
+  const links = ['en', 'nb'].map(language => element({ dataset: { languageLink: language } }));
   const bar = {
     querySelector(selector) {
       return { select, '[data-language-continue]': button, '[data-language-text]': text, '[data-language-controls]': controls }[selector];
@@ -46,6 +47,7 @@ function visit({ languages = ['en-US'], saved = {}, pathname = '/', search = '',
     URLSearchParams,
     document: {
       documentElement: { lang: page.lang },
+      querySelectorAll: () => links,
       querySelector(selector) {
         if (selector === '[data-language-bar]') return bar;
         const language = selector.match(/hreflang="(\w+)"/)?.[1];
@@ -54,16 +56,16 @@ function visit({ languages = ['en-US'], saved = {}, pathname = '/', search = '',
     }
   });
   const choose = value => options.forEach(o => { o.selected = o.value === value; });
-  return { redirects, store, controls, select, options, button, strong, span, text, choose };
+  return { redirects, store, controls, select, options, button, strong, span, text, links, choose };
 }
 
 test('the menu and Continue button replace the plain links', () => {
   assert.equal(visit().controls.hidden, false);
 });
 
-test('the current language is selected and marked when the browser agrees', () => {
+test('the current language is selected when the browser agrees', () => {
   const page = visit({ languages: ['en-GB'] });
-  assert.deepEqual(page.options.map(o => o.textContent), ['✓ English', 'Norsk']);
+  assert.equal(page.select.value, 'en');
   assert.equal(page.strong.textContent, 'static title');
   assert.equal(page.button.textContent, 'Continue');
 });
@@ -71,7 +73,7 @@ test('the current language is selected and marked when the browser agrees', () =
 test('a Norwegian browser on an English page gets a Norwegian suggestion and no redirect', () => {
   for (const language of ['nb-NO', 'nn-NO', 'no']) {
     const page = visit({ languages: [language] });
-    assert.deepEqual(page.options.map(o => o.textContent), ['English', '✓ Norsk']);
+    assert.equal(page.select.value, 'nb');
     assert.equal(page.text.lang, 'nb');
     assert.equal(page.strong.textContent, 'suggested title');
     assert.equal(page.span.textContent, 'suggested line');
@@ -96,11 +98,15 @@ test('a remembered choice overrides the browser languages', () => {
   assert.equal(visit({ languages: ['en-US'], saved: { 'paperhops-language': 'nb' } }).select.value, 'nb');
 });
 
-test('the check mark follows the selection', () => {
+test('option labels are left alone, since the native menu marks the selection', () => {
+  const page = visit({ languages: ['nb-NO'] });
+  assert.deepEqual(page.options.map(o => o.textContent), ['', '']);
+});
+
+test('language links remember the choice', () => {
   const page = visit();
-  page.choose('nb');
-  page.select.listeners.change();
-  assert.deepEqual(page.options.map(o => o.textContent), ['English', '✓ Norsk']);
+  page.links[1].listeners.click();
+  assert.equal(page.store['paperhops-language'], 'nb');
 });
 
 test('Continue opens the same page in the chosen language and remembers it', () => {
