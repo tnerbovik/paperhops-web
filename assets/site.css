@@ -68,19 +68,20 @@ a:focus-visible, select:focus-visible { outline: 3px solid var(--brand-tomato); 
   .hero-visual { animation: rise .7s cubic-bezier(.22, 1, .36, 1) .15s backwards; }
 }
 .trust-strip { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; list-style: none; padding: 0 0 56px; margin-block: 0; }
-.trust-strip li { background: var(--color-background-selected); border-radius: var(--radius-pill); padding: 10px 18px; font-size: 15px; font-weight: 600; }
-.trust-strip li:before { content: "✓"; color: var(--color-tint); margin-right: 8px; }
+.trust-strip li { display: inline-flex; align-items: center; gap: 8px; background: var(--color-background-selected); border-radius: var(--radius-pill); padding: 10px 18px; font-size: 15px; font-weight: 600; line-height: 1.25; }
+.trust-strip li:before { content: "✓"; color: var(--color-tint); }
 
 /* Sections */
 .section { padding-block: 84px; border-top: 1px solid var(--color-border); }
 .section-heading { text-align: center; max-width: 720px; margin: 0 auto 48px; }
 .section-heading > p:not(.eyebrow) { font-size: 18px; color: var(--color-text-secondary); margin-bottom: 0; }
 .levels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; list-style: none; padding: 0; margin: 0 auto; max-width: 940px; }
-.levels li { display: flex; flex-direction: column; }
+.levels li { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.levels .sheet { align-self: stretch; }
 .levels .sheet { margin-bottom: 26px; }
 .levels li:nth-child(1) .sheet { transform: rotate(-2deg); }
 .levels li:nth-child(3) .sheet { transform: rotate(2deg); }
-.level-age { display: inline-block; align-self: flex-start; font-family: var(--font-display); font-weight: 600; font-size: 18px; padding: 4px 14px; border-radius: var(--radius-pill); background: var(--soft); color: var(--ink); margin-bottom: 14px; }
+.level-age { display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 600; font-size: 18px; line-height: 1.25; padding: 5px 16px; border-radius: var(--radius-pill); background: var(--soft); color: var(--ink); margin-bottom: 14px; }
 .levels p { color: var(--color-text-secondary); margin-bottom: 0; }
 /* Crayon accents, as in the app: each crayon has a soft fill and an ink for text on it. */
 .crayon-tomato { --soft: var(--color-tomato-soft); --ink: var(--color-tomato-ink); }
@@ -99,7 +100,7 @@ a:focus-visible, select:focus-visible { outline: 3px solid var(--brand-tomato); 
 .pair .sheet:last-child { transform: rotate(3deg) translateY(18px); }
 .pair-arrow { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: var(--color-primary); color: var(--color-on-primary); font-size: 22px; box-shadow: var(--shadow-raised); }
 .subjects { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; list-style: none; padding: 0; margin: 0 auto; max-width: 900px; }
-.subjects li { background: var(--soft); color: var(--ink); border-radius: var(--radius-pill); padding: 10px 20px; font-family: var(--font-display); font-weight: 500; font-size: 18px; }
+.subjects li { display: inline-flex; align-items: center; line-height: 1.25; background: var(--soft); color: var(--ink); border-radius: var(--radius-pill); padding: 10px 20px; font-family: var(--font-display); font-weight: 500; font-size: 18px; }
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; list-style: none; padding: 0; margin: 0; counter-reset: step; }
 .steps li { counter-increment: step; }
 .steps li:before { content: counter(step); display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--color-primary); color: var(--color-on-primary); font-family: var(--font-display); font-weight: 600; font-size: 22px; margin-bottom: 20px; }
