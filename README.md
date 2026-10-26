@@ -23,7 +23,7 @@ The app is not in the App Store yet. Search for `TODO(launch)`:
 - Replace the placeholder `https://apps.apple.com/app/paperhops` with the real App Store URL (header button and both badges, on every page).
 - Remove the "Coming soon to the App Store" / "Kommer snart i App Store" notes.
 
-Also make sure hello@paperhops.app receives mail: it is the contact address on every page.
+The contact address on every page is tnerbovik@gmail.com for now. hello@paperhops.app forwards through Dynadot's free email forwarding, but Gmail rejects mail from Dynadot's forwarding servers as likely spam (550 5.7.1, October 2026). Switch the domain's MX to a forwarder Gmail accepts (such as ImprovMX) before putting hello@ back.
 
 ## Languages
 
