@@ -16,11 +16,9 @@ The site is plain HTML with two shared stylesheets (`assets/theme.css` for the d
 
 `/free/` (free printable colouring pages) and `tools/` are a separate section built on their own. The marketing pages link to `/free/` from the header, the hero, a teaser section and the footer; each link is marked with a `FREE PAGES SLOT` comment.
 
-## Launch checklist
+## Launch
 
-Version 1.0.0 is approved and waits for a manual release. Every App Store link already points at the real page, `https://apps.apple.com/app/id6826825768`, which works once the app is released. On release, search for `TODO(launch)`:
-
-- Remove the "Coming soon to the App Store" / "Kommer snart i App Store" notes.
+Paperhops 1.0.0 is live in the App Store (27 October 2026): https://apps.apple.com/app/id6826825768
 
 The contact address on every page is tnerbovik@gmail.com for now. hello@paperhops.app forwards through Dynadot's free email forwarding, but Gmail rejects mail from Dynadot's forwarding servers as likely spam (550 5.7.1, October 2026). Switch the domain's MX to a forwarder Gmail accepts (such as ImprovMX) before putting hello@ back.
 
