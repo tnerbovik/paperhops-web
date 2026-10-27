@@ -18,9 +18,8 @@ The site is plain HTML with two shared stylesheets (`assets/theme.css` for the d
 
 ## Launch checklist
 
-The app is not in the App Store yet. Search for `TODO(launch)`:
+Version 1.0.0 is approved and waits for a manual release. Every App Store link already points at the real page, `https://apps.apple.com/app/id6826825768`, which works once the app is released. On release, search for `TODO(launch)`:
 
-- Replace the placeholder `https://apps.apple.com/app/paperhops` with the real App Store URL (header button and both badges, on every page).
 - Remove the "Coming soon to the App Store" / "Kommer snart i App Store" notes.
 
 The contact address on every page is tnerbovik@gmail.com for now. hello@paperhops.app forwards through Dynadot's free email forwarding, but Gmail rejects mail from Dynadot's forwarding servers as likely spam (550 5.7.1, October 2026). Switch the domain's MX to a forwarder Gmail accepts (such as ImprovMX) before putting hello@ back.
