@@ -20,7 +20,7 @@ The site is plain HTML with two shared stylesheets (`assets/theme.css` for the d
 
 Paperhops 1.0.0 is live in the App Store (27 October 2026): https://apps.apple.com/app/id6826825768
 
-The contact address on every page is tnerbovik@gmail.com for now. hello@paperhops.app forwards through Dynadot's free email forwarding, but Gmail rejects mail from Dynadot's forwarding servers as likely spam (550 5.7.1, October 2026). Switch the domain's MX to a forwarder Gmail accepts (such as ImprovMX) before putting hello@ back.
+The contact address on every page is hello@paperhops.app. ImprovMX (free plan, signed in as tnerbovik@gmail.com) forwards it to tnerbovik@gmail.com; the domain's MX records point at mx1/mx2.improvmx.com, with an SPF record for spf.improvmx.com (October 2026). Dynadot's own email forwarding was dropped because Gmail rejected its mail as spam.
 
 ## Languages
 

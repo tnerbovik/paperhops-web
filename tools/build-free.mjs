@@ -27,8 +27,8 @@ const SITE = 'https://paperhops.app';
 const BASE = `${SITE}/free/`;
 /** The main site's home page per language; it carries the App Store link, so "get the app" goes there too. */
 const HOME = { en: '/', no: '/no/' };
-/** Contact address in the footer, as on the main site (hello@paperhops.app's forwarding is unreliable for now). */
-const CONTACT = 'tnerbovik@gmail.com';
+/** Contact address in the footer, as on the main site. */
+const CONTACT = 'hello@paperhops.app';
 /** Fixed PDF dates, so a rebuild only changes files whose drawing changed. */
 const PDF_DATE = new Date('2026-10-25T00:00:00Z');
 const YEAR = 2026;
